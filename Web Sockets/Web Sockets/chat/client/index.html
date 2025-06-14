@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrowddyChat</title>
+    <script type="module">
+        import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js'
+
+        const loginForm = document.getElementById('login-form');
+        const usernameInput = document.getElementById('username-input');
+        const loginButton = document.getElementById('login-button');
+        const chatSection = document.getElementById('chat');
+
+        loginForm.style.display = 'block';
+        chatSection.style.display = 'none';
+
+        loginButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const username = usernameInput.value.trim();
+            if (username) {
+                localStorage.setItem('username', username);
+                loginForm.style.display = 'none';
+                chatSection.style.display = 'block';
+                initializeChat(username);
+            }
+        });
+
+        const initializeChat = async (username) => {
+            const socket = io({
+                auth: {
+                    username: username,
+                    serverOffset: 0
+                }
+            });
+
+            const form = document.getElementById('form');
+            const input = document.getElementById('input');
+            const messages = document.getElementById('messages');
+
+            socket.on('chat message', (msg, serverOffset, username) => {
+                const item = `
+                <li>
+                    <p>${msg}</p>
+                    <small>${username}</small>
+                </li>
+                `;
+                messages.insertAdjacentHTML('beforeend', item);
+                socket.auth.serverOffset = serverOffset;
+                messages.scrollTop = messages.scrollHeight;
+            });
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (input.value) {
+                    socket.emit('chat message', input.value);
+                    input.value = '';
+                }
+            });
+        };
+
+        // Check if there is a username in localStorage
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+            loginForm.style.display = 'none';
+            chatSection.style.display = 'block';
+            initializeChat(storedUsername);
+        }
+    </script>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        :root {
+            color-scheme: dark;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: grid;
+            place-content: center;
+            height: 100vh;
+            padding: 36px 36px 100px 36px;
+            grid-template-rows: 1fr;
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow-y: scroll;
+            height: 100%;
+            scroll-behavior: smooth;
+            padding-bottom: 48px;
+        }
+
+        #messages > li {
+            padding: .5rem 1rem;
+        }
+
+        #messages > li:nth-child(odd) {
+            background: #000;
+        }
+
+        #chat {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+            width: 350px;
+            height: 100%;
+            position: relative;
+        }
+
+        #form {
+            bottom: 0;
+            display: flex;
+            height: 48px;
+            left: 0;
+            padding: 4px;
+            position: absolute;
+            right: 0;
+        }
+
+        #input {
+            border-radius: 999px;
+            border: 1px solid #eee;
+            flex: 1;
+            margin: 4px;
+            padding: 0 8px;
+        }
+
+        #input:focus {
+            outline: none;
+        }
+
+        #form > button {
+           background:#09f;
+           color: white;
+           border: 0;
+           margin: 4px;
+           border-radius: 4px;
+        }
+
+        #form > button:hover {
+            background: #0cf;
+        }
+
+        #login-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #login-form input {
+            padding: 8px;
+            margin: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        #login-form button {
+            padding: 8px 16px;
+            margin: 8px;
+            border-radius: 4px;
+            border: none;
+            background: #09f;
+            color: white;
+        }
+
+        #login-form button:hover {
+            background: #0cf;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-form">
+        <input type="text" id="username-input" placeholder="Enter your username" autocomplete="off" />
+        <button id="login-button">Login</button>
+    </div>
+    <section id="chat">
+        <ul id="messages"></ul>
+        <form id="form">
+            <input type="text" name="message" id="input" placeholder="Type a message" autocomplete="off" />
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+</body>
+</html>

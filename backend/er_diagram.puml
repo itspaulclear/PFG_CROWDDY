@@ -1,0 +1,82 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+!define RECTANGLE_SIZE 100
+
+rectangle "USERS" as users #LightBlue {
+    rectangle "id (PK)" #White
+    rectangle "username (único)" #White
+    rectangle "password" #White
+    rectangle "name" #White
+    rectangle "surname" #White
+    rectangle "birthday" #White
+    rectangle "location" #White
+    rectangle "bio" #White
+    rectangle "interests" #White
+    rectangle "picture" #White
+    rectangle "done_favours" #White
+    rectangle "requested_favours" #White
+    rectangle "account_no_expired" #White
+    rectangle "account_no_locked" #White
+    rectangle "credential_no_expired" #White
+    rectangle "is_enabled" #White
+}
+
+rectangle "ROLES" as roles #LightGreen {
+    rectangle "id (PK)" #White
+    rectangle "role_name (enum)" #White
+    rectangle "ADMIN" #LightGray
+    rectangle "DEVELOPER" #LightGray
+    rectangle "INVITED" #LightGray
+    rectangle "USER" #LightGray
+}
+
+rectangle "PERMISSIONS" as permissions #LightYellow {
+    rectangle "id (PK)" #White
+    rectangle "name (único)" #White
+}
+
+rectangle "USER_ROLES" as user_roles #LightGray {
+    rectangle "user_id (PK, FK)" #White
+    rectangle "role_id (PK, FK)" #White
+}
+
+rectangle "ROLE_PERMISSIONS" as role_permissions #LightGray {
+    rectangle "role_id (PK, FK)" #White
+    rectangle "permission_id (PK, FK)" #White
+}
+
+rectangle "USER_CONTACTS" as user_contacts #LightGray {
+    rectangle "user_id (PK, FK)" #White
+    rectangle "contact_id (PK, FK)" #White
+}
+
+' Relaciones con cardinalidades
+users --> user_roles : "1..*"
+roles --> user_roles : "1..*"
+
+roles --> role_permissions : "1..*"
+permissions --> role_permissions : "1..*"
+
+users --> user_contacts : "1..*"
+users --> user_contacts : "1..*" as contact
+
+' Notas sobre las relaciones
+note right of user_roles
+    Relación M:N entre Users y Roles
+    Un usuario puede tener varios roles
+    Un rol puede estar asignado a varios usuarios
+end note
+
+note right of role_permissions
+    Relación M:N entre Roles y Permissions
+    Un rol puede tener varios permisos
+    Un permiso puede estar asignado a varios roles
+end note
+
+note right of user_contacts
+    Relación M:N entre Users (contactos)
+    Un usuario puede tener varios contactos
+    Un usuario puede ser contacto de varios usuarios
+end note
+@enduml

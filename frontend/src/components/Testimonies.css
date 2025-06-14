@@ -1,0 +1,161 @@
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    grid-gap: 20px;
+    padding: 20px;
+    justify-items: center;
+    align-items: start;
+    width: 100%;
+    min-height: 100vh;  
+    box-sizing: border-box;
+    background-color: #030229; 
+    padding-bottom: 50px; 
+    overflow-y: auto; 
+}
+
+.testimonial-header {
+    position: relative;
+    height: 245px;
+    background-image: url('./testimonios/cover.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+
+.testimonial-header p {
+    max-width: 140px;
+    margin-top: 10px;
+}
+
+.testimonial-button {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    position: absolute;
+    top: 80%;
+    transition: background-color .3s ease;
+}
+
+.testimonial-button:hover {
+    background-color: rgb(219, 219, 219);
+}
+
+.testimonial-header h2 {
+    color: white;
+}
+
+.testimonial-card {
+    background-color: #001357;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 350px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Arial', sans-serif;
+}
+
+.testimonial-card:not(:first-child):not(:last-child):hover {
+    transform: translateY(-10px); 
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card h1 {
+    font-size: 20px;
+}
+
+.testimonial-card:last-child {
+    height: 220px;
+    background: linear-gradient(45deg, rgb(1, 12, 230), rgb(0, 255, 255)); 
+    background-size: 400% 400%; 
+    animation: gradientAnimation 7s ease infinite; 
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.testimonial-card:last-child h1, p {
+    color: white;
+}
+
+.register-testimonial-button {
+    width: 95px;
+    padding: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.648);
+    border-radius: 10px;
+    margin-top: 65px;
+    margin-left: 220px;
+    transition: background-color .3s ease;
+}
+
+.register-testimonial-button:hover {
+    background-color: white;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-details h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+}
+
+.user-details p {
+    color: white;
+    font-size: 1rem;
+}
+
+.testimonial-text {
+    font-size: 1rem;
+    color: white;
+    line-height: 1.4;
+    margin: 10px 0px;
+}
+
+.tweet-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #5b5b5b;
+}
+
+.tweet-stats span {
+    display: flex;
+    align-items: center;
+}
+
+.likes, .retweets {
+    margin-right: 15px;
+    color: rgb(255, 255, 255);
+}
+
+.time {
+    color: #ffffff;
+}
+

@@ -1,0 +1,775 @@
+button.backButtonRegister {
+  position: fixed;
+  top: 20px;
+  left: 15px;
+  min-width: 60px;
+  height: 30px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  z-index: 100;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.backButtonRegister:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 2px 2px 1px black;
+  cursor: pointer;
+}
+
+.backContainer .backTextRegister {
+  margin: 0;
+  font-size: 12px;
+  color: black;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(90deg, #2c3e72, #1a3a56);
+  overflow-y: auto;
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.register-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+}
+
+.register-container h2 {
+  color: #fff;
+  margin: 0 0 1.5rem 0;
+  font-size: 1.5rem;
+}
+
+.register-container .input-container {
+  margin-bottom: 12px;
+}
+
+.register-container input,
+.register-container select,
+.register-container textarea {
+  width: 100%;
+  height: 44px;
+  padding: 10px 12px;
+  margin: 4px 0 0 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.register-container select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  padding-right: 30px;
+}
+
+.register-container input:focus {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register-container input.error {
+  border: 2px solid #ff4b2b;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.password-error {
+  color: #ff4b2b;
+  font-size: 0.8rem;
+  margin: 2px 0 0 4px;
+  margin-bottom: 10px;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.char-remaining {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.error-message {
+  color: #ff4d4f;
+  margin-bottom: 1rem;
+  text-align: center;
+  z-index: 1000;
+  opacity: 1;
+}
+
+.react-tooltip.place-top:after {
+  border-top-color: #ff4b2b;
+}
+
+.react-tooltip {
+  z-index: 9999;
+}
+
+.location-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.location-suggestions {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-height: 250px;
+  overflow-y: auto;
+  margin-top: 4px;
+}
+
+.suggestion-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  color: #333;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+  border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: #f5f5f5;
+}
+
+.location-input-container input {
+  width: 100%;
+  padding: 14px 15px;
+  margin: 5px 0 12px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.location-input-container input:focus {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.location-input-container input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.bio-input-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.bio-input-container textarea {
+  width: 100%;
+  min-height: 44px;
+  height: 44px;
+  padding: 10px 12px;
+  margin: 4px 0 0 0;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  outline: none;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: auto;
+  line-height: 1.5;
+}
+
+.bio-input-container textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.bio-input-container textarea:focus {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bio-input-container textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.date-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.date-input-container input[type="date"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 4px 0 0 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.date-input-container input[type="date"]:focus {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.date-input-container input[type="date"]:invalid {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.error-tooltip {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: #ff4b2b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: help;
+}
+
+.error-tooltip span {
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+  line-height: 1;
+  margin-top: -1px;
+}
+
+.error-tooltip[data-tooltip-content]:hover::after {
+  content: attr(data-tooltip-content);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100%;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  background-color: #ff4b2b;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+input[type="date"]::-moz-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.image-url-container {
+  position: relative;
+  width: 100%;
+}
+
+.image-preview-tooltip {
+  position: absolute;
+  left: calc(100% + 15px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transform-origin: left center;
+  animation: scaleIn 0.15s ease-out;
+  pointer-events: none;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.image-preview-tooltip img {
+  display: block;
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.image-preview-tooltip::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  transform: rotate(45deg);
+  z-index: -1;
+  box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.image-url-container input[type="url"] {
+  padding-right: 40px; 
+}
+
+@media (max-width: 1024px) {
+  .image-preview-tooltip {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+  
+  .image-preview-tooltip::before {
+    display: none;
+  }
+  
+  .image-preview-tooltip img {
+    max-width: 100%;
+    max-height: 80vh;
+  }
+}
+
+.register-container input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.register-container button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #1a3a56;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.register-container button:hover {
+  background: #2c3e72;
+  transform: scale(1.02);
+}
+
+.register-container .error-message {
+  color: #FF4B2B;
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 0.9rem;
+}
+
+.register-container form {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.input-container > div,
+.input-container > .full-width-field,
+.input-container > div > div {
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.register-container input[type="text"],
+.register-container input[type="email"],
+.register-container input[type="password"],
+.register-container input[type="url"],
+.register-container textarea {
+  margin: 5px 0 12px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.register-container textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+  margin-bottom: 5px !important;
+}
+
+@media (max-width: 767px) {
+  .input-container > div {
+    margin-bottom: 5px !important;
+  }
+  
+  .input-container > div:has(textarea) {
+    margin-bottom: -10px !important;
+  }
+  
+  .input-container > div:has(textarea) ~ div {
+    margin-top: -25px !important;
+  }
+  
+  .input-container > div:has(textarea) + div {
+    margin-top: -20px !important;
+  }
+  
+  button[type="submit"] {
+    margin-top: 20px !important;
+  }
+  
+  .register-container input,
+  .register-container textarea,
+  .register-container .interests-container,
+  .register-container .location-fields {
+    margin: 5px 0 !important;
+  }
+}
+
+.input-container input {
+  width: 100%;
+  margin: 5px 0 12px 0;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  margin: 15px 0 5px 0;
+}
+
+.popup {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  max-width: 300px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  z-index: 1000;
+  opacity: 0;
+  animation: popupFadeIn 0.5s forwards;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content h3 {
+  color: #1a3a56;
+  margin: 0;
+  font-size: 1rem;
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.priv-checkbox-container {
+  margin: 15px 0;
+  position: relative;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  user-select: none;
+  line-height: 1.4;
+  position: relative;
+  padding-left: 30px;
+  margin: 0;
+}
+
+.priv-checkbox {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.checkmark {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  height: 20px;
+  width: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.priv-checkbox:checked + .checkmark {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.priv-checkbox:checked + .checkmark:after {
+  display: block;
+}
+
+.checkbox-text {
+  display: inline;
+  white-space: nowrap;
+  margin-left: 5px;
+  line-height: 1.5;
+}
+
+.privacy-link {
+  color: #64b5f6;
+  text-decoration: none;
+  transition: color .2s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.privacy-link:hover {
+  color: #90caf9;
+  text-decoration: underline;
+}
+
+@media (min-width: 600px) {
+  .backButtonRegister {
+    min-width: 70px;
+    height: 35px;
+    padding: 18px 25px;
+    left: 30px;
+    top: 30px;
+    font-size: 14px;
+  }
+
+  .backContainer .backTextRegister {
+    font-size: 11px;
+  }
+
+  .register-container {
+    padding: 2rem;
+    max-width: 600px;
+  }
+
+  .register-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .input-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  
+  .input-container > div {
+    width: calc(50% - 10px);
+    margin-bottom: 0;
+  }
+  
+  .input-container input {
+    width: 100%;
+  }
+
+  button[type="submit"] {
+    width: 60%;
+    margin: 20px auto 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .register-page {
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .backButtonRegister {
+    min-width: 70px;
+    height: 30px;
+    padding: 15px 20px;
+    left: 30px;
+    top: 30px;
+    font-size: 12px;
+  }
+
+  .backContainer .backTextRegister {
+    font-size: 12px;
+  }
+
+  .register-container {
+    padding: 2rem;
+    max-width: 500px;
+  }
+
+  .register-container h2 {
+    font-size: 1.75rem; 
+    margin-bottom: 1.5rem; 
+  }
+
+  .input-container {
+    gap: 20px; 
+  }
+  
+  .input-container > div {
+    width: calc(50% - 15px);
+    margin-bottom: 0;
+  }
+  
+  .input-container input {
+    width: 100%;
+  }
+
+  button[type="submit"] {
+    width: 45%; 
+    padding: 10px;
+    font-size: 1rem; 
+    margin-top: 1rem; 
+  }
+
+  .popup {
+    max-width: 350px;
+    padding: 20px;
+  }
+
+  .popup-content h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .register-container {
+    max-width: 550px; 
+  }
+  
+  .register-container h2 {
+    font-size: 2.2rem;
+  }
+  
+  .input-container input {
+    padding: 14px 16px;
+  }
+  
+  button[type="submit"] {
+    padding: 14px;
+  }
+}
+
+
+
+
+
+
+
+

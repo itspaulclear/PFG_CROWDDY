@@ -1,0 +1,32 @@
+USERS (Entidad Principal)
+├── id (PK)
+├── username (único)
+├── password
+├── name
+├── surname
+├── birthday
+├── location
+├── bio
+├── interests
+├── picture
+├── done_favours
+├── requested_favours
+├── account_no_expired
+├── account_no_locked
+├── credential_no_expired
+└── is_enabled
+
+ROLES (Entidad)
+├── id (PK)
+└── role_name (enum: ADMIN, DEVELOPER, INVITED, USER)
+
+PERMISSIONS (Entidad)
+├── id (PK)
+└── name (único)
+
+RELACIONES:
+1. USERS -- USER_ROLES (1:N)
+2. ROLES -- USER_ROLES (1:N)
+3. ROLES -- ROLE_PERMISSIONS (1:N)
+4. PERMISSIONS -- ROLE_PERMISSIONS (1:N)
+5. USERS -- USER_CONTACTS (1:N) (doble relación)

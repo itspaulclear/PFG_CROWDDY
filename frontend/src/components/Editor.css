@@ -1,0 +1,135 @@
+.editor-back-button {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.editor-back-button {
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    transition: background-color .3s ease;
+}
+
+.editor-back-button:hover {
+    background-color: azure;
+}
+
+.editor-content {
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    background-color: rgba(70, 70, 92, 0.655);
+    border: 3px solid white;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.editor-content h2 {
+    margin-bottom: 12px;
+    color: white;
+}
+
+.editor-content label {
+    color: white;
+    margin-right: 10px;
+}
+
+.editor-content input {
+    padding: 6px 30px 6px 10px;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.password-input {
+    padding-right: 30px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    transform: translateY(-50%);
+    background: none !important;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+}
+
+.editor-input {
+    margin-top: 12px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    flex: 1;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.password-tooltip {
+    visibility: hidden;
+    width: 200px;
+    background-color: #ff4d4d;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.8em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.password-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #ff4d4d transparent transparent transparent;
+}
+
+.editor-input:hover .password-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.editor-content button {
+    border: none;
+    padding: 7px;
+    border-radius: 10px;
+    transition: background-color .3s ease;
+    font-size: 14px;
+}
+
+.editor-content button:hover {
+    background-color: azure;
+}

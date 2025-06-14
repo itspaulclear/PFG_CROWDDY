@@ -1,0 +1,151 @@
+:root {
+  --mobile: 480px;
+  --tablet: 768px;
+  --laptop: 1024px;
+  --desktop: 1200px;
+}
+
+.hide-on-mobile {
+  display: block;
+}
+
+.hide-on-desktop {
+  display: none;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+  
+  .hide-on-desktop {
+    display: block !important;
+  }
+  
+  html {
+    font-size: 14px;
+  }
+  
+  .dashboard {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .sidebar {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 60px;
+    overflow-y: auto;
+  }
+  
+  .sidebar nav ul {
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+  }
+  
+  .sidebar nav ul li {
+    padding: 5px;
+    font-size: 0.8rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .sidebar nav ul li svg {
+    margin: 0 0 3px 0;
+  }
+  
+  .content {
+    margin-bottom: 70px;
+    padding: 10px;
+  }
+  
+  .dashboard-header {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .post-box {
+    width: 100%;
+  }
+  
+  .feed {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .dashboard {
+    flex-direction: row;
+  }
+  
+  .sidebar {
+    width: 70px;
+    padding: 10px 5px;
+    margin: 10px 0 10px 10px;
+    height: calc(100vh - 20px);
+    overflow-y: auto;
+  }
+  
+  .sidebar nav ul li {
+    justify-content: center;
+    padding: 15px 5px;
+    font-size: 0;
+  }
+  
+  .sidebar nav ul li svg {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .content {
+    padding: 10px;
+    margin-left: 10px;
+  }
+  
+  .dashboard-header {
+    width: 100%;
+  }
+  
+  .post-box, .feed {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .dashboard {
+    width: 100%;
+  }
+  
+  .sidebar {
+    width: 200px;
+    margin: 20px 0 20px 20px;
+    height: calc(100vh - 40px);
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .dashboard-header {
+    width: 770px;
+  }
+  
+  .post-box, .feed {
+    width: 100%;
+    max-width: 770px;
+  }
+}
