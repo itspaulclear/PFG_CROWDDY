@@ -17,7 +17,7 @@ const Register = () => {
   const [picture, setPicture] = useState('');
   const [bio, setBio] = useState('');
   const [bioCharCount, setBioCharCount] = useState(0);
-  const maxBioLength = 200;
+  const maxBioLength = 1000;
   const [interests, setInterests] = useState('');
   const [location, setLocation] = useState('');
   const [locationSuggestions, setLocationSuggestions] = useState([]);
@@ -253,7 +253,7 @@ const Register = () => {
       const data = await response.json().catch(e => ({}));
       
       toast.success('Usuario registrado exitosamente', {
-        duration: 2000,
+        duration: 1000,
         onAutoClose: () => navigate('/log-in')
       });
       
@@ -438,8 +438,6 @@ const Register = () => {
         </form>
         <Tooltip id="password-tooltip" />
       </div>
-
-
     </div>
   );
 };
