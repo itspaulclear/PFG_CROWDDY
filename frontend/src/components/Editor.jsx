@@ -195,7 +195,7 @@ function Editor() {
           <label>Apellidos:</label>
           <input 
             type="text" 
-            name="lastName" 
+            name="surname" 
             value={user[8] || ''} 
             onChange={handleChange}
           />
